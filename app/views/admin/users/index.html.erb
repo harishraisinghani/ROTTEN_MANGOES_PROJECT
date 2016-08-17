@@ -1,1 +1,9 @@
 <h1> Welcome admin user </h1>
+
+<h2>Current list of users are: </h2>
+<% @users.each do |user| %>
+  <%= user.full_name %> (<%= user.email %>)<br>
+<% end %>
+
+<%= paginate @users %>
+

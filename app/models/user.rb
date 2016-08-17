@@ -1,5 +1,9 @@
 class User < ApplicationRecord
 
+  paginates_per 10
+  max_paginates_per 10
+
+  
   has_many :reviews
   
   has_secure_password

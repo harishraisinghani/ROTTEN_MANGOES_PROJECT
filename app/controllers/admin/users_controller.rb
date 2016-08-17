@@ -8,5 +8,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
+    # @user = User.all
+    @users = User.order(:firstname).page(params[:page]).per(2)
   end
 end
