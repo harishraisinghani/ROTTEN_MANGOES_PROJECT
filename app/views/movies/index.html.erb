@@ -1,20 +1,17 @@
 <h1>Rotten Mangoes</h1>
 <hr>
 
-<!-- Search parameters -->
+<!-- Search form-->
 <%= form_tag("/search", method: "get") do %>
   <%= label_tag(:title, "Title:") %>
   <%= text_field_tag(:title) %>
-<!--   <%= label_tag(:director, "Director:") %>
-  <%= text_field_tag(:director) %> -->
+  <%= label_tag(:director, "Director:") %>
+  <%= text_field_tag(:director) %>
+  <%= label_tag(:runtime_in_minutes, "Duration:") %>
+  <%= select_tag :runtime_in_minutes, options_for_select(['<90mins','Between 90 and 120 mins', '>120mins']), prompt: "Please select" %>
   <%= submit_tag("Search") %>
 <% end %>
 
-<% movies_search = Movie.where("title like ?", "%#{params[:title]}%")%>
-
-<% if !movies_search.empty? %>
-  <% @movies = movies_search %>
-<% end %> 
 
 <% @movies.each do |movie| %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
