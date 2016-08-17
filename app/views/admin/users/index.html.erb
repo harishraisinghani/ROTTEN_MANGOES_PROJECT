@@ -2,8 +2,9 @@
 
 <h2>Current list of users are: </h2>
 <% @users.each do |user| %>
-  <%= user.full_name %> (<%= user.email %>)<br>
+  <%= link_to user.full_name, admin_user_path(user) %><br>
 <% end %>
 
 <%= paginate @users %>
+
 
