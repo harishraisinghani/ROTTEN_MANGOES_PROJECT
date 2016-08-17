@@ -1,5 +1,21 @@
 <h1>Rotten Mangoes</h1>
 <hr>
+
+<!-- Search parameters -->
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:title, "Title:") %>
+  <%= text_field_tag(:title) %>
+<!--   <%= label_tag(:director, "Director:") %>
+  <%= text_field_tag(:director) %> -->
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% movies_search = Movie.where("title like ?", "%#{params[:title]}%")%>
+
+<% if !movies_search.empty? %>
+  <% @movies = movies_search %>
+<% end %> 
+
 <% @movies.each do |movie| %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h3><%= movie.director %></h3>
