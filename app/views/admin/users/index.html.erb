@@ -1,6 +1,6 @@
 <h1> Welcome admin user </h1>
 
-<h2>Current list of users are: </h2>
+<h2>Current list of all users are: </h2>
 <% @users.each do |user| %>
   <%= link_to user.full_name, admin_user_path(user) %><br>
 <% end %>

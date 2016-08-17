@@ -1,5 +1,43 @@
 <%= link_to "Back to this user", admin_user_path(@user) %>
 
 <h1>Edit user</h1>
-<%= render './users/form' %>
+
+<% if @user.errors.any? %>
+  <div>
+    <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [:admin, @user] do |f| %>
+<div>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %>
+</div>
+<div>
+  <%= f.label :firstname, "First Name" %><br>
+  <%= f.text_field :firstname %>
+</div>
+<div>
+  <%= f.label :lastname, "Last Name" %><br>
+  <%= f.text_field :lastname %>
+</div>
+<div>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %>
+</div>
+<div>
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation %>
+</div>
+<div>
+  <%= f.label :admin, "Make Admin?"%><br>
+  <%= f.check_box :admin %>
+</div>
+  <div><%= f.submit "Submit" %></div>
+<% end %>
 
