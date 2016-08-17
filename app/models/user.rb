@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  before_save :default_values
+
   paginates_per 10
   max_paginates_per 10
 
@@ -15,6 +17,10 @@ class User < ApplicationRecord
 
   def full_name
     "#{firstname} #{lastname}"
+  end
+
+  def default_values
+    self.admin ||= false
   end
 
 end
