@@ -2,20 +2,19 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+
     unless params[:title].blank?
-      @movies = @movies.where("title like ?", "%#{params[:title]}%")
+      @movies = @movies.search_by_title(params[:title])
     end
 
     unless params[:director].blank?
-      @movies = @movies.where("director like ?","%#{params[:director]}%" )
+      @movies = @movies.search_by_director(params[:director])
     end
 
-    if params[:runtime_in_minutes] == '<90mins'
-      @movies = @movies.where("runtime_in_minutes < ?", 90)
-    elsif params[:runtime_in_minutes] == 'Between 90 and 120 mins'
-      @movies = @movies.where("runtime_in_minutes >= ? AND runtime_in_minutes <= ? ", 90,120)
-    elsif params[:runtime_in_minutes] == '>120mins'
-      @movies = @movies.where("runtime_in_minutes > ?", 120)
+    unless params[:runtime_in_minutes].blank?
+      @movies = @movies.less_than_90(params[:runtime_in_minutes]).between_90_120(params[:runtime_in_minutes]).greater_than_120(params[:runtime_in_minutes])
+      # @movies = @movies.between_90_120(params[:runtime_in_minutes]) - dont' need these two in lieu of chaining scope methods above
+      # @movies = @movies.greater_than_120(params[:runtime_in_minutes])
     end
   end
 
