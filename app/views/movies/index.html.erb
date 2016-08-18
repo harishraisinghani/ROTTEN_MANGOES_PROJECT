@@ -2,11 +2,11 @@
 <hr>
 
 <!-- Search form-->
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag(:title) %>
-  <%= label_tag(:director, "Director:") %>
-  <%= text_field_tag(:director) %>
+  <%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search title or director name") %>
+  <%= text_field_tag(:q) %>
+<!--   <%= label_tag(:director, "Director:") %>
+  <%= text_field_tag(:director) %> -->
   <%= label_tag(:runtime_in_minutes, "Duration:") %>
   <%= select_tag :runtime_in_minutes, options_for_select(['<90mins','Between 90 and 120 mins', '>120mins']), prompt: "Please select" %>
   <%= submit_tag("Search") %>

@@ -12,8 +12,9 @@ class Movie < ApplicationRecord
   validates :release_date, presence: true
   validate :release_date_is_in_the_past
 
-  scope :search_by_title, -> (title) { where("title like ?", "%#{title}%")}
-  scope :search_by_director, -> (director) { where("director like?", "%#{director}%")}
+  # scope :search_by_title, -> (title) { where("title like ?", "%#{title}%")}
+  # scope :search_by_director, -> (director) { where("director like?", "%#{director}%")} #Replaced with next line combining searches
+  scope :search_by_title_or_director, -> (q) { where("title like ? OR director like ?", "%#{q}%","%#{q}%")}
   scope :less_than_90, -> (duration) { where("runtime_in_minutes < ?", 90) if duration == '<90mins'}
   scope :between_90_120, -> (duration) { where("runtime_in_minutes >= ? AND runtime_in_minutes <= ? ", 90,120) if duration == 'Between 90 and 120 mins' }
   scope :greater_than_120, -> (duration) { where("runtime_in_minutes > ?", 120) if duration == '>120mins'}
