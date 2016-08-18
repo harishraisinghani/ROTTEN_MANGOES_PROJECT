@@ -1,0 +1,6 @@
+<h2><%= link_to movie.title, movie_path(movie) %></h2>
+<h3><%= movie.director %></h3>
+<small><%= movie.runtime_in_minutes %><%= formatted_date(movie.release_date) %></small>
+<p><%= movie.description%></p>
+<small><%= movie.post_image_url %></small>
+<div><%= image_tag movie.image_url.to_s %></div>

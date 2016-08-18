@@ -1,9 +1,9 @@
 RottenMangoes::Application.routes.draw do
-  get 'reviews/new'
+  # get 'reviews/new'
 
-  get 'reviews/create'
+  # get 'reviews/create'
 
-  get 'new/create'
+  # get 'new/create'
 
   #get 'sessions/new'
 
