@@ -1,16 +1,20 @@
-<h1>Rotten Mangoes</h1>
-<hr>
+<div class="container">
+  <div class="row">
+    <h1>Rotten Mangoes</h1>
+    <%= link_to "Submit a movie!", new_movie_path %>
+    <hr>
 
-<!-- Search form-->
-  <%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Search title or director name") %>
-  <%= text_field_tag(:q) %>
-<!--   <%= label_tag(:director, "Director:") %>
-  <%= text_field_tag(:director) %> -->
-  <%= label_tag(:runtime_in_minutes, "Duration:") %>
-  <%= select_tag :runtime_in_minutes, options_for_select(['<90mins','Between 90 and 120 mins', '>120mins']), prompt: "Please select" %>
-  <%= submit_tag("Search") %>
-<% end %>
+    <!-- Search form-->
+      <%= form_tag("/search", method: "get") do %>
+      <%= label_tag(:q, "Search title or director name") %>
+      <%= text_field_tag(:q) %>
+      <%= label_tag(:runtime_in_minutes, "Duration:") %>
+      <%= select_tag :runtime_in_minutes, options_for_select(['<90mins','Between 90 and 120 mins', '>120mins']), prompt: "Please select" %>
+      <%= submit_tag("Search") %>
+    <% end %>
+    <hr>
 
 
-<%= render @movies %>
+    <%= render @movies %>
+  </div>
+</div>

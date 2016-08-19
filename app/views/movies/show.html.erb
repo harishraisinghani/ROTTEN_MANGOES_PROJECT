@@ -1,21 +1,28 @@
-<%= link_to "Back to all movies", movies_path %>
-  <h2><%= @movie.title %> (<%=link_to "edit", edit_movie_path(@movie)%> <%= link_to "delete", movie_path(@movie), :method => :delete, :"data-confirm" => "Are you sure?" %>)</h2>
-  <h3><%= @movie.director %></h3>
-  <small><%= @movie.runtime_in_minutes %><%= formatted_date(@movie.release_date) %></small>
-  <p><%= @movie.description%></p>
-  <%= link_to image_tag(@movie.post_image_url), movie_path(@movie)%>
-  <div><%= image_tag @movie.image_url.to_s %></div>
+<div class="container">
+  <div class="row">
+    <%= link_to "Back to all movies", movies_path %><br/>
 
-<hr>
-  
-<h3>Reviews of <em><%= @movie.title %></em></h3>
-<% if current_user %>
-  <% @movie.reviews.each do |review| %>
-    <p><%= review.text %></p>
-    <p><%= review.rating_out_of_ten %>/10</p>
-    <small>- <%=link_to review.user.full_name, user_path(review.user) %></small><br/>
-  <% end %>
-  <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
-<% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
-<% end %>
+    <h2><%= @movie.title %><br>
+    <button type="button" class="btn btn-primary btn-xs"><%= link_to "Edit", edit_movie_path(@movie)%></button>
+    <button type="button" class="btn btn-danger btn-xs"><%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?"} %></button></h2>
+    <h3><%= formatted_date(@movie.release_date) %></h3>
+    <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
+    <p><%= @movie.description %></p>
+    <div><%= image_tag(@movie.image_url.to_s, size: "175x275") %></div>
+
+    <hr>
+    <div class="row"> 
+      <h3>Reviews of <em><%= @movie.title %></em></h3>
+      <% if current_user %>
+        <% @movie.reviews.each do |review| %>
+          <p><%= review.text %></p>
+          <p><%= review.rating_out_of_ten %>/10</p>
+          <small>- <%=link_to review.user.full_name, user_path(review.user) %></small><br/>
+        <% end %>
+        <p><button type="button" class="btn btn-success"><%= link_to "Write a review!", new_movie_review_path(@movie) %></button></p>
+      <% else %>
+        <p>Please <button type="button" class="btn btn-success"><%= link_to "log in", new_session_path %></button> to see reviews and add your own.</p> 
+      <% end %>
+    </div>
+  </div>
+</div>

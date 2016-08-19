@@ -29,15 +29,8 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(
-      title:  params[:movie][:title],
-      director: params[:movie][:director],
-      runtime_in_minutes: params[:movie][:runtime_in_minutes],
-      description: params[:movie][:description],
-      post_image_url: params[:movie][:post_image_url],
-      release_date: params[:movie][:release_date]
-    )
-
+    @movie = Movie.new(movie_params)
+    
     if @movie.save
       redirect_to movies_path, notice: "#{@movie.title} was successfully submitted"
     else

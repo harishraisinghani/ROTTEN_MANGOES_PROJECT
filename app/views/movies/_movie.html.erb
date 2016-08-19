@@ -1,6 +1,24 @@
+<div class="col-md-4">
+  <div class="card">
+    <img class="card-img-top src="<%= link_to(image_tag(movie.image_url.to_s, size: "175x275"), movie) %>>
+    <div class="card-block">
+      <h4 class="card-title"><%= link_to movie.title, movie_path(movie) %></h4>
+      <p class="card-text"><%= movie.description %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Dir. <%= movie.director %></li>
+      <li class="list-group-item">Runtime: <%= movie.runtime_in_minutes %> minutes</li>
+      <li class="list-group-item">Release Date: <%= formatted_date(movie.release_date) %></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- 
 <h2><%= link_to movie.title, movie_path(movie) %></h2>
-<h3><%= movie.director %></h3>
-<small><%= movie.runtime_in_minutes %><%= formatted_date(movie.release_date) %></small>
-<p><%= movie.description%></p>
-<small><%= movie.post_image_url %></small>
-<div><%= image_tag movie.image_url.to_s %></div>
+<h3><%= formatted_date(movie.release_date) %></h3>
+<h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+<p><%= movie.description %></p>
+<div><%= link_to(image_tag(movie.image_url.to_s, size: "175x275"), movie) %></div>
+<hr> -->
+  
