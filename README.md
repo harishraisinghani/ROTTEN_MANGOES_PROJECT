@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project demonstrates our ability to use Rails to quickly build a mock 'www.rottentomatoes.com' website.
 
-Things you may want to cover:
+Things covered in this project include:
 
-* Ruby version
+* Authentication from scratch
 
-* System dependencies
+* Partials and helpers
 
-* Configuration
+* Associations
 
-* Database creation
+* Nested Resources
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Filters and search logic
