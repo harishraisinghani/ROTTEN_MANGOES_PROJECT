@@ -16,4 +16,5 @@ Things covered in this project include:
 
 Example of my Rotten Mangoes website:
 
+![Example picture]
 (https://www.dropbox.com/home?preview=Screen+Shot+2016-08-28+at+16.09.25.png)
