@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <h1>Rotten Mangoes</h1>
-    <%= link_to "Submit a movie!", new_movie_path %>
+    <button type="button" class='btn btn-lg btn-primary'>
+      <%= link_to "Submit a movie!", new_movie_path %>
+    </button>
+    
     <hr>
 
     <!-- Search form-->
@@ -10,7 +13,8 @@
       <%= text_field_tag(:q) %>
       <%= label_tag(:runtime_in_minutes, "Duration:") %>
       <%= select_tag :runtime_in_minutes, options_for_select(['<90mins','Between 90 and 120 mins', '>120mins']), prompt: "Please select" %>
-      <%= submit_tag("Search") %>
+        <%= submit_tag("Search") %>
+      
     <% end %>
     <hr>
 

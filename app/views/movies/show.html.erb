@@ -1,15 +1,16 @@
-<div class="container">
+<div class="container text-center">
   <div class="row">
     <%= link_to "Back to all movies", movies_path %><br/>
 
-    <h2><%= @movie.title %><br>
-    <button type="button" class="btn btn-primary btn-xs"><%= link_to "Edit", edit_movie_path(@movie)%></button>
-    <button type="button" class="btn btn-danger btn-xs"><%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?"} %></button></h2>
-    <h3><%= formatted_date(@movie.release_date) %></h3>
-    <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
-    <p><%= @movie.description %></p>
-    <div><%= image_tag(@movie.image_url.to_s, size: "175x275") %></div>
-
+    <div class="well">
+      <h2><%= @movie.title %><br>
+      <button type="button" class="btn btn-primary btn-xs"><%= link_to "Edit", edit_movie_path(@movie)%></button>
+      <button type="button" class="btn btn-danger btn-xs"><%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?"} %></button></h2>
+      <h3><%= formatted_date(@movie.release_date) %></h3>
+      <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
+      <p><%= @movie.description %></p>
+      <div><%= image_tag(@movie.image_url.to_s, size: "175x275") %></div>
+    </div>
     <hr>
     <div class="row"> 
       <h3>Reviews of <em><%= @movie.title %></em></h3>
